@@ -15,6 +15,7 @@
             	<%= image_tag picture.picture_img.url(:picture_index), class:"rounded"%>
 						<% end %>
             <h3 class="card-text" style="color: #<%= Digest::MD5.hexdigest(picture.title+picture.category.name)[0..5]%>"><%= picture.title %></h3>
+            <h3 class="card-text">created by: <%= picture.user.username[0..5].capitalize %></h3>
          </div>
          <% end %>
       </div>

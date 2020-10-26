@@ -1,7 +1,10 @@
 <p id="notice"><%= notice %></p>
-<%= link_to 'Destroy', @picture, method: :delete, data: { confirm: 'Are you sure?' } %> |
-<%= link_to 'Edit', edit_picture_path(@picture) %> |
+<% if !current_user.nil? and current_user.id == @picture.user_id %>
+	<%= link_to 'Destroy', @picture, method: :delete, data: { confirm: 'Are you sure?' } %> |
+	<%= link_to 'Edit', edit_picture_path(@picture) %> |
+<% end %>
 <%= link_to 'Back', pictures_path %>
+
 <p>
   <strong>Title:</strong>
   <%= @picture.title %>
