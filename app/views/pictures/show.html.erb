@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+<%= link_to 'Destroy', @picture, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<%= link_to 'Edit', edit_picture_path(@picture) %> |
+<%= link_to 'Back', pictures_path %>
+<p>
+  <strong>Title:</strong>
+  <%= @picture.title %>
+</p>
+<p>
+  <strong>Categories:</strong>
+</p>
+<p>
+  Name: <%= @picture.category.name %> <br/>
+</p>
+<p>
+  <strong>Picture:</strong>
+</p>
+<p>
+  <%= image_tag(@picture.picture_img.url(:picture_show), class:"rounded-top style_image")%>
+</p>
+
+
+
+

@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+<% if params[:category] %>
+	<h2 class="current-category">Category: <%= params[:category] %></h2>
+<% end %>
+<br/>
+
+<% if @pictures.count == 0 %>
+<h3> There are no pictures currently in this category </h3>
+<% else %>
+   <div class="container">
+      <div class="row">
+         <% @pictures.each do |picture| %>
+         <div class="card">
+						<%= link_to picture, target: :_blank do %>
+            	<%= image_tag picture.picture_img.url(:picture_index), class:"rounded"%>
+						<% end %>
+            <h3 class="card-text" style="color: #<%= Digest::MD5.hexdigest(picture.title+picture.category.name)[0..5]%>"><%= picture.title %></h3>
+         </div>
+         <% end %>
+      </div>
+   </div>
+
+<% end %>
+
+<br>
+<% if user_signed_in? %>
+  <%= link_to 'New Picture', new_picture_path %>
+<% else %>
+  Please <%= link_to "log-in", new_user_session_path %> first
+<% end %>
